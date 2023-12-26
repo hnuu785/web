@@ -1,10 +1,11 @@
 .headerContainer {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
+	justify-content: space-between;
+	margin-left: 10%;
+	margin-right: 10%;
 }
-.headerItems {
+.hButton {
+	flex-basis: 20%;
 	font-family: Consolas;
 	font-size: 2em;
 }
