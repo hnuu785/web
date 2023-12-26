@@ -1,1 +1,10 @@
-a
+.headerContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+.headerItems {
+	font-family: Consolas;
+	font-size: 2em;
+}
