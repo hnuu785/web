@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<title>To Do List</title>
+
+<style>
+
+h1 { text-align : center; font : 40px Consolas; }
+
+.child {
+	border : 2px solid black;
+	width : 1000px;
+	height : 800px;
+	margin : auto;
+	padding : 10px;
+}
+
+#inputList {
+	font : 20px Consolas;
+	width : 500px;
+	height : 50px;
+}
+
+li {
+	font : 40px Consolas;
+}
+
+</style>
+</head>
+<body>
+
+<h1>To Do List</h1>
+
+<div class="child">
+	<input type='text' id='inputList' placeholder='할 일을 입력하세요.' onkeydown='enterkey()' /><input type='button' value='추가' onclick='addList()' />
+	<ul id='todolist'>
+	</ul>
+	<button onclick='deleteList()'>Clear</button>
+</div>
+
+<script>
+
+let idx = 0;
+let i = 0; let j = 0;
+
+if (localStorage.length > 0) {
+	idx = window.localStorage.getItem('idx');
+}
+
+function enterkey() {
+	if (window.event.keyCode == 13) {
+		addList();
+		document.getElementById('inputList').value = '';
+	}
+}
+
+function addList() {
+	const inputText = document.getElementById('inputList').value;
+	const ul = document.getElementById('todolist');
+	const li = document.createElement('li');
+	
+	const textNode = document.createTextNode(inputText);
+	li.appendChild(textNode);
+	li.setAttribute('id', '' + idx);
+	
+	
+	const cButton = document.createElement('button');
+	cButton.addEventListener('click', completeList);
+	cButton.appendChild(document.createTextNode('Complete'));
+	li.appendChild(cButton);
+	
+	ul.appendChild(li);
+	
+	window.localStorage.setItem('' + idx, inputText);
+
+	idx = Number(idx);
+	idx += 1;
+	window.localStorage.setItem('idx', idx);
+	
+	document.getElementById('inputList').value = '';
+}
+
+function completeList(e) {
+	e.target.parentElement.setAttribute('style', 'text-decoration:line-through; color:grey;');
+	localStorage.setItem('c' + e.target.parentElement.id, '1');
+}
+
+function deleteList() {
+	localStorage.clear();
+}
+
+function start() {
+	for (i = 0; i < localStorage.length; i++) {
+		let loadText = window.localStorage.getItem('' + i);
+		if (loadText != null) {
+			const ul = document.getElementById('todolist');
+			const li = document.createElement('li');
+			const textNode = document.createTextNode(loadText);
+			li.appendChild(textNode);
+			if (localStorage.getItem('c' + i) == '1') {
+				li.setAttribute('style', 'text-decoration:line-through; color:grey;');
+			}
+			ul.appendChild(li);
+
+			const cButton = document.createElement('button');
+			cButton.addEventListener('click', completeList);
+			cButton.appendChild(document.createTextNode('Complete'));
+			li.appendChild(cButton);
+		}
+	}
+}
+
+start();
+
+</script>
+</body>
+</html>
