@@ -1,0 +1,14 @@
+h1 {
+	text-align : center;
+}
+.container {
+	
+}
+.child {
+	width : 1400px;
+	height : 820px;
+	margin : auto;
+}
+canvas {
+	border : 2px solid black;
+}
