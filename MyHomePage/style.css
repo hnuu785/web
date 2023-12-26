@@ -9,3 +9,11 @@
 	font-family: Consolas;
 	font-size: 2em;
 }
+.wrap {
+	background-color: tomato;
+}
+.title {
+	text-align:center;
+	font-size:5em;
+	color: white;
+}
