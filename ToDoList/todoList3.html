@@ -4,15 +4,40 @@
 
 <title>To Do List 2.0</title>
 
+<style>
+	.inputContainer {
+		display: flex;
+		justify-content: center;
+	}
+	.nodeContainer {
+		
+	}
+</style>
 </head>
 <body>
 
-
+<h1 style="text-align:center; font: 3rem Consolas">To Do List 2.0</h1>
+<div class="inputContainer">
+	<input id="inputNode" type="text" onkeydown="enterKey()" placeholder="Input what you have to do and press enter key." autofocus />
+</div>
+<div class="nodeContainer">
+	
+</div>
 
 <script>
-
-
-
+	const inputNode = document.getElementById("inputNode");
+	
+	function addNode() {
+		if (inputNode.value == "") {return;}
+		let list
+	}
+	
+	function enterkey() {
+	if (window.event.keyCode == 13) {
+		addNode();
+		document.getElementById('inputNode').value = "";
+	}
+}
 </script>
 </body>
 </html>

@@ -55,21 +55,21 @@ function enterkey() {
 }
 
 function addList() {
-	const inputText = document.getElementById('inputList').value;
-	const ul = document.getElementById('todolist');
-	const li = document.createElement('li');
+	let inputText = document.getElementById('inputList').value;
+	let ul = document.getElementById('todolist');
+	let li = document.createElement('li');
 	
-	const textNode = document.createTextNode(inputText);
+	let textNode = document.createTextNode(inputText);
 	li.appendChild(textNode);
 	li.setAttribute('id', '' + idx);
 	
 	
-	const cButton = document.createElement('button');
+	let cButton = document.createElement('button');
 	cButton.addEventListener('click', completeList);
 	cButton.appendChild(document.createTextNode('Complete'));
 	li.appendChild(cButton);
 	
-	const dButton = document.createElement('button');
+	let dButton = document.createElement('button');
 	dButton.addEventListener('click', deleteList);
 	dButton.appendChild(document.createTextNode('Delete'));
 	li.appendChild(dButton);
@@ -90,8 +90,8 @@ function completeList(e) {
 }
 
 function deleteList(e) {
-	const list = e.target.parentElement;
-	const lid = Number(list.id);
+	let list = e.target.parentElement;
+	let lid = Number(list.id);
 	
 	window.localStorage.removeItem(lid);
 	list.remove();
@@ -109,18 +109,18 @@ function deleteList(e) {
 function start() {
 	for (i = 0; i < localStorage.length - 1; i++) {
 		let loadText = window.localStorage.getItem('' + i);
-		const ul = document.getElementById('todolist');
-		const li = document.createElement('li');
-		const textNode = document.createTextNode(loadText);
+		let ul = document.getElementById('todolist');
+		let li = document.createElement('li');
+		let textNode = document.createTextNode(loadText);
 		li.appendChild(textNode);
 		ul.appendChild(li);
 
-		const cButton = document.createElement('button');
+		let cButton = document.createElement('button');
 		cButton.addEventListener('click', completeList);
 		cButton.appendChild(document.createTextNode('Complete'));
 		li.appendChild(cButton);
 
-		const dButton = document.createElement('button');
+		let dButton = document.createElement('button');
 		dButton.addEventListener('click', deleteList);
 		dButton.appendChild(document.createTextNode('Delete'));
 		li.appendChild(dButton);
